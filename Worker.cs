@@ -19,8 +19,13 @@ namespace MessageBroker
         {
             try
             {
-
-                await RunBroker(stoppingToken);
+                Thread connectionThread = new Thread(() => { RunBroker(stoppingToken); });
+                connectionThread.Start();
+                stoppingToken.Register(() =>
+                {
+                    connectionThread.Join();
+                    _logger.LogInformation($"Worker service token is canceled");
+                });
             }
             catch (Exception e)
             {
