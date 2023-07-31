@@ -7,8 +7,5 @@
       },
       "dotnetRunMessages": true
     },
-    "Docker": {
-      "commandName": "Docker"
-    }
   }
 }
