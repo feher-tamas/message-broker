@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  messagebroker:
+    image: ${DOCKER_REGISTRY-}messagebroker
+    build:
+      context: .
+      dockerfile: Dockerfile
